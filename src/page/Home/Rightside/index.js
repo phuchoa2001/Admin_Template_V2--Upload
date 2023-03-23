@@ -1,12 +1,13 @@
 import React from 'react';
 
 import Styles from './index.module.css';
-import { useNotification } from './queries/queries';
 import Upload from './Upload';
 import UploadSkeleton from './UploadSkeleton';
 
 function RightSide(props) {
-    const { data, isLoading } = useNotification({});
+    const data = []
+    const isLoading = false;
+
     return (
         <div className={Styles.RightSide}>
             <h3 className="heading-text">Updates</h3>

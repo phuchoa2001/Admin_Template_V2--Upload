@@ -10,15 +10,18 @@ import {
 import Styles from "./index.module.css";
 import Card from "../../../../components/Card";
 import CardSkeleton from "../../../../components/CardSkeleton";
-import { useToTal } from "./queries/queries";
 
 function ListCard() {
   let history = useHistory();
 
-  const { data, isLoading } = useToTal({});
+  const data = {
+    data : [0 , 0, 0]
+  }
+  const isLoading = false;
+
   return (
     <div className={Styles.ListCard}>
-      <Row>
+      <Row gutter={[0, 8]}>
         {!isLoading ? (
           <>
             <Card

@@ -7,7 +7,7 @@ function Dashboard(props) {
         <>
             <h1 className="heading-text--large" >Dashboard</h1>
             <ListCard />
-            <h3 className="heading-text">Ứng dụng</h3>
+            <h3 className="heading-text">Tài Khoản</h3>
             <ListOrder />
         </>
     );

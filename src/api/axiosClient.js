@@ -1,9 +1,7 @@
 import axios from 'axios';
 import queryString from 'query-string';
 
-// import { doLogout } from 'features/Auth/authSlice';
-import Notification from '../components/Notification';
-import handleErrorMessage from '../commons/handleErrorMessage/handleErrorMessage';
+import { doLogout } from '../redux/authSlice';
 
 const axiosClient = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}`,
@@ -39,30 +37,24 @@ const httpService = {
 
     axiosClient.interceptors.response.use(
       (response) => {
-        // if (response.data?.data) {
-        //   return response.data.data;
-        // }
-
         return response;
       },
       (error) => {
-        const errorMessage = handleErrorMessage(error.response || error);
-        console.log('errorMessage: ', errorMessage);
 
         if (error.response) {
           const { config, status } = error.response;
-          const URLs = ['/admin/verifyToken'];
+          const URLs = ['/verifyToken'];
+
           if (
             !URLs.includes(config.url) &&
             (status === 401 || status === 403)
           ) {
-            // store.dispatch(doLogout());
+            store.dispatch(doLogout());
           }
+          return { data: error.response }
         }
 
-        Notification('error', errorMessage.message);
-
-        return Promise.reject(errorMessage);
+        return Promise.reject(error.response);
       },
     );
   },

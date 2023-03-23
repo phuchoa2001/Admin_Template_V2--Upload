@@ -2,13 +2,13 @@ import axiosClient from './axiosClient';
 
 const authApi = {
   login(data) {
-    return axiosClient.post('/admin/login', data);
+    return axiosClient.post('/login', data);
   },
   logout(data) {
-    return axiosClient.post('/admin/logout', data);
+    return axiosClient.post('/logout', data);
   },
   verifyToken(data) {
-    return axiosClient.post('/admin/verify_token', data);
+    return axiosClient.post('/protected', data);
   },
 };
 

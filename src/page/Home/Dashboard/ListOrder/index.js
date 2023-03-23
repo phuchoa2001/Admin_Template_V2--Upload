@@ -1,48 +1,72 @@
 import React from 'react';
-import { Spin } from 'antd';
+import { Spin, Image } from 'antd';
 //  Data
-import useColumns from '../../../app/useColumns';
-import { useApp } from '../../../app/queries/queries';
-import { useCustomSearchParams } from '../../../../hooks/useCustomSearchParams';
 import TableData from '../../../../components/TableData';
 
-const pageSize = 2;
 function ListOrder(props) {
-    const [search, setSearch] = useCustomSearchParams();
-    const argument = {
-        params: {
-            ...search,
-            page_size: pageSize
-        },
-        options: {
-            keepPreviousData: true,
-        },
-    };
-    const { data, isPreviousData, isFetching, isLoading } = useApp(argument);
-    const { columns } = useColumns();
 
+    const columns = [
+        {
+            title: 'Tên',
+            dataIndex: 'name',
+            align: 'center',
+            render: (_, values, index) => (
+                <div data-label="Tên">{values.name}</div>
+            )
+        },
+        {
+            title: 'Đường dẫn',
+            dataIndex: 'url',
+            align: 'center',
+            render: (_, values, index) => (
+                <div data-label="Đường dẫn">{values.url}</div>
+            )
+        },
+        {
+            title: 'Github',
+            dataIndex: 'github',
+            align: 'center',
+            render: (_, values, index) => (
+                <div data-label="github">{values.github}</div>
+            )
+        },
+        {
+            title: 'Hình ảnh',
+            dataIndex: 'image',
+            align: 'center',
+            render: (_, values, index) => (
+                <div data-label="Hình Ảnh">
+                    <Image src={values.image.url} alt="" className="image" width={100} preview={true} />
+                </div>
+            )
+        },
+        {
+            title: 'Biểu tượng',
+            dataIndex: 'icon',
+            align: 'center',
+            render: (_, values, index) => (
+                <div data-label="Biểu tượng" className="image">
+                    <Image src={values.icon.url} alt="" width={100} />
+                </div>
+            )
+        },
+    ];
 
-    const handleChange = (query) => {
-        setSearch({ ...search, page_size: query.pageSize, page: query.current })
-    }
     return (
         <>
-            {!isLoading ?
-                < TableData
-                    rowKey="_id"
-                    columns={columns}
-                    dataSource={data.data.data}
-                    loading={isPreviousData && isFetching}
-                    hideButton={true}
-                    pagination={{
-                        current: search.page,
-                        position: ['bottomCenter'],
-                        pageSize,
-                        total: data.data.meta.total
-                    }}
-                    onChange={handleChange}
-                /> : <Spin />
-            }
+            < TableData
+                rowKey="_id"
+                columns={columns}
+                dataSource={[]}
+                // loading={isPreviousData && isFetching}
+                hideButton={true}
+            // pagination={{
+            //     current: search.page,
+            //     position: ['bottomCenter'],
+            //     pageSize,
+            //     total: data.data.meta.total
+            // }}
+            />
         </>
     );
 }

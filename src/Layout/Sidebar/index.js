@@ -36,6 +36,7 @@ function SideBar(props) {
     const history = useHistory();
     const dispatch = useDispatch();
     const { permission } = useSelector(state => getCurrentUser(state));
+
     return (
         <div className={Styles.Sidebar}>
             <div className={Styles.wrapper}>

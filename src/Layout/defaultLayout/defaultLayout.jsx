@@ -6,7 +6,6 @@ import clsx from "clsx";
 import ManiDash from "../Maindash";
 import SideBar from "../Sidebar";
 import Styles from "../index.module.css";
-import Modal from "../../components/Modal";
 
 function DefaultLayout(props) {
   const [open, setOpen] = useState(false);
@@ -46,7 +45,6 @@ function DefaultLayout(props) {
             <ManiDash />
           </Col>
         </Row>
-        <Modal />
       </div>
     </div>
   );

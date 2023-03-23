@@ -1,26 +1,23 @@
 import Home from '../page/Home';
 import Link404 from '../page/Link404';
 
-import { AppRouter } from './app';
-import { ImageRouter } from './Image';
-import { IconRouter } from './Icon';
-import { CategoryRouter } from './Category';
-import { BlogRouter } from './blogs';
+import { usersRouter } from './users';
+
+import { permission } from '../constants/permission';
+
 const router = [
     {
         path: "/",
         exact: true,
         mani: () => <Home />,
+        permission: [permission.all]
     },
-    ...AppRouter,
-    ...ImageRouter,
-    ...IconRouter,
-    ...CategoryRouter,
-    ...BlogRouter,
+    ...usersRouter,
     {
         path: "",
         exact: true,
-        mani: () => <Link404 />
+        mani: () => <Link404 />,
+        permission: [permission.all]
         ,
     },
 ]
