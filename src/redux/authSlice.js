@@ -30,6 +30,7 @@ const authSlice = createSlice({
   },
   extraReducers: {
     [doLogin.fulfilled]: (state, action) => {
+      console.log("action.payload" ,  action.payload);
       state.user = action.payload.data.user;
       state.isLoggedIn = true;
     },

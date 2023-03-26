@@ -12,6 +12,7 @@ function MenuSideBar(props) {
     let location = useLocation();
     const { pathname } = location;
     const { permission } = useSelector(state => getCurrentUser(state));
+    
     const SideBarDataFilter = SideBarData.filter(
         item => item.permission.includes(permission) || item.permission.includes(permissionType.all)
     );

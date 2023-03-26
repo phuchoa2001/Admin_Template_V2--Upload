@@ -76,11 +76,11 @@ function Login(props) {
 		const { status, data } = result.payload;
 
 		if (status === 200) {
-			localStorage.setItem("token", data.token);
+			await localStorage.setItem("token", data.token);
 			unwrapResult(result);
 		} else {
 			if (data) {
-				toast.error(data.data.message)
+				toast.error(data.data)
 			}
 		}
 	};

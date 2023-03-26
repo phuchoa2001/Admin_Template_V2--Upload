@@ -12,6 +12,7 @@ function DefaultLayout(props) {
   const handleToogleMenu = () => {
     setOpen((prev) => !prev);
   };
+
   return (
     <div className="App">
       <div className="AppGlass">

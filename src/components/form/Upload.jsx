@@ -33,7 +33,7 @@ const getBase64 = (file) =>
     reader.onerror = (error) => reject(error);
   });
 
-const UploadForm = ({ value, onChange, aspect }) => {
+const UploadForm = ({ value, onChange, aspect , accept }) => {
   const [base64, setBase64] = useState(value);
   const beforeUpload = async (file) => {
     const Image = await getBase64(file);

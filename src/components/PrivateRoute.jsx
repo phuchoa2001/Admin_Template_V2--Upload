@@ -7,7 +7,7 @@ import { doCheckAuth } from "../redux/authSlice";
 
 export default function PrivateRoute({ children }) {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => state.Auth.isLoggedIn);
+  const { isLoggedIn } = useSelector((state) => state.Auth);
   const [isCheckingStatus, setIsCheckingStatus] = useState(true);
   const accessToken = localStorage.getItem("token");
 

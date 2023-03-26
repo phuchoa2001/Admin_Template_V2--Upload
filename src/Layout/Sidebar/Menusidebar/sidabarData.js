@@ -1,4 +1,4 @@
-import { HomeOutlined, UserOutlined } from '@ant-design/icons';
+import { HomeOutlined, UserOutlined , FileImageOutlined } from '@ant-design/icons';
 import { permission } from '../../../constants/permission';
 
 export const SideBarData = [
@@ -12,6 +12,12 @@ export const SideBarData = [
         title: "Tài khoản",
         icon: <UserOutlined />,
         path: "/users",
+        permission: [permission.admin]
+    },
+    {
+        title: "Tải lên hình ảnh",
+        icon: <FileImageOutlined />,
+        path: "/images",
         permission: [permission.admin]
     }
 ]
